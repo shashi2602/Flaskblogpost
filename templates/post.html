@@ -1,0 +1,28 @@
+{% extends 'main.html'%}
+{% block title %}
+    {{posts.title}}
+{% endblock%}
+{% block sub_content%}
+{% with messages=get_flashed_messages(with_categories=True)%}
+ {% if messages %}
+    {% for category,message in messages%}
+    <div class="alert alert-{{category}}" role="alert">
+        {{message}}
+       </div>
+    {% endfor %}
+  {% endif%}
+{% endwith %}
+<div class="container-fluid">
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item active">{{posts.title}}</li>
+      </ul>
+</div>
+     <div class="container">
+
+     
+         <h1>{{posts.title}}</h1>
+          <p>{{posts.content|safe}}</p>
+          <p>{{posts.author}}</p>
+        </div>
+{% endblock %}

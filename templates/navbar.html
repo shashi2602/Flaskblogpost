@@ -1,0 +1,23 @@
+<div class="container p-4" style="background-color:lightgray;width: auto;padding: 10px;">
+    <h1 class="display-1 text-center">FlaskBlog</h1>
+</div>
+<nav class="navbar navbar-inverse navbar-expand-sm bg-light navbar-light sticky-top" style="border-radius: 0px;">
+      <ul class="nav navbar-nav">
+        <li class=""><a href="/">Home</a></li>
+        {% if session.login %}
+        
+        <li class=""><a href="/createpost">create post</a></li>
+        <li class=""><a href="/allposts">All post</a></li>
+        {% endif %}
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {% if session.login %}
+          <li style="color: white;"><a><span class="glyphicon glyphicon-user"></span> {{session['username']}}</a></li>
+         <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        {% else %}
+          <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+          <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        {% endif %}
+      </ul>
+    
+  </nav>

@@ -1,0 +1,65 @@
+{% extends 'main.html' %}
+{% block title%}
+     Register
+{% endblock%}
+{% block sub_content %}
+<div class="container" style="width: 500px;">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+     {% for category,message in messages %}
+       <div class="alert alert-{{category}}" role="alert">
+          {{message}}
+       </div>
+     {% endfor %}
+   {% endif %}
+  {% endwith %}
+    <h2 class="display-1 text-center">Register </h2>
+
+    <form class="form-horizontal" method="POST">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="Firstname">Firstname:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="Firstname" placeholder="Enter firstname" name="firstname" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="Lastname">Lastname:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="Lastname" placeholder="Enter Lastname" name="lastname"required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="Username">Username:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="Username" placeholder="Enter Username" name="username"required>
+            </div>
+          </div>
+       
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">Email:</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="email" placeholder="Enter email" name="email"required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="pwd">Password:</label>
+        <div class="col-sm-10">          
+          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd"required>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="pwd">confirm Password:</label>
+        <div class="col-sm-10">          
+          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="confirm_pwd" required>
+        </div>
+      </div>
+      <div class="form-group">        
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-primary btn-block btn-lg">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}

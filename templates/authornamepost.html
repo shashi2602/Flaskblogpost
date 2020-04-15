@@ -1,0 +1,43 @@
+{% extends 'main.html'%}
+{% block title %}
+{% if posts %}
+{% for aposts in posts %}
+    {{aposts.author}} Posts
+{% endfor %}
+{% endif %}
+{% endblock%}
+{% block sub_content%}
+{% with messages=get_flashed_messages(with_categories=True)%}
+ {% if messages %}
+    {% for category,message in messages%}
+    <div class="alert alert-{{category}}" role="alert">
+        {{message}}
+       </div>
+    {% endfor %}
+  {% endif%}
+{% endwith %}
+<div class="container-fluid">
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">Author</li>
+        <li class="breadcrumb-item active">
+            {% if posts %}
+            {% for aposts in posts %}
+                {{aposts.author}}
+            {% endfor %}
+            {% endif %}
+        </li>
+      </ul>
+</div>
+      {% if posts %}
+        {% for aposts in posts %}
+        <div class="container">
+         <a href="/{{aposts.title}}" style="text-decoration: none;"> <h1>{{aposts.title}}</h1></a>
+          <p>{{aposts.content|safe}}</p>
+          <p>{{aposts.author}}</p>
+          <hr>
+        </div>
+        {% endfor%}
+      {% else %}
+        <p></p>
+      {%endif%}
+{% endblock %}

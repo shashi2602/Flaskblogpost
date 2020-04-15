@@ -1,0 +1,18 @@
+{% extends 'bootstrap/base.html'%}
+{%block head%}
+{{ckeditor.load()}}
+{{super()}}
+{% endblock%}
+{%block title%}
+    flask project
+{% endblock%}
+{% block navbar %}
+    {% include 'navbar.html'%}
+{% endblock%}
+
+
+{% block content %}
+    {%block sub_content%}
+
+    {% endblock %}
+{% endblock %}

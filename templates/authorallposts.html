@@ -1,0 +1,56 @@
+{% extends 'main.html'%}
+{% block title %}
+Your posts
+{% endblock%}
+{% block sub_content%}
+{% with messages=get_flashed_messages(with_categories=True)%}
+ {% if messages %}
+    {% for category,message in messages%}
+    <div class="alert alert-{{category}}" role="alert">
+        {{message}}
+       </div>
+    {% endfor %}
+  {% endif%}
+{% endwith %}
+       {% if session.login %}
+       <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item">{{session['username']}}</li>
+            <li class="breadcrumb-item active">All Post</li>
+          </ul>
+    </div>
+          <div class="container">
+
+            {% if posts %}
+            <table class="table table-bordered table-striped">
+            <tr>
+              <th>Id</th>
+              <th>Title</th>
+              <th>Options</th>
+            </tr>
+              {% for aposts in posts %}
+              <tr>
+               <td> <p>{{aposts.id}}</p></td>
+               <td><p>{{aposts.title}}</p></td>
+               <td>
+                <a href="/{{aposts.title}}" type="button" class="btn btn-info">View</a>
+                <a href="/edit/{{aposts.id}}" type="button" class="btn btn-primary">Edit</a> 
+                <a href="/delete/{{aposts.id}}" type="button" class="btn btn-danger">Delete</a> 
+
+              </td>
+              {% endfor%}
+              </tr>
+            </table>
+            {% else %}
+               <p>No posts written</p>
+            {% endif %}
+          </div>
+      {%else%}
+      <div class="container pt-3">
+        <div class="jumbotron">
+            <h1 class="text-center">Login to view your post </h1>
+  
+        </div>
+  </div>
+      {%endif%}
+{% endblock %}
